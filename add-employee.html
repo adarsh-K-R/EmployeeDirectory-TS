@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Employee</title>
+        <link rel="stylesheet" href="./assets/css/add-employee.css">
+        <script type="module" src="./dist/db.js"></script>
+        <script type="module" src="./dist/add-employee.js"></script>
+        <script src="./dist/navbar.js"></script>
+    </head>
+    <body>
+        <nav id="side-nav" class="side-nav">
+            <div class="logo-container">
+                <!-- Logo and nav-bar minimise button here -->
+                <img id="tezo-logo" alt="Tezo Logo" src="./assets/images/side-navbar/tezo-logo.svg">
+                <img id="toggle-side-nav" alt="Side navbar toggle button" src="./assets/images/side-navbar/toggle-side-nav.png">
+            </div>
+            <div id="side-nav-wrapper">
+                <div id="side-nav-items">
+                    <div class="all-pages-section">
+                        <!-- Different Pages option here -->
+                        <p class="side-nav-heading">ALL</p>
+                        <!-- Nav Dashboard -->
+                        <div class="nav-option" id="nav-dashboard">
+                            <div class="nav-option-left">
+                                <img class="nav-icon" alt="Lock icon" src="./assets/images/side-navbar/dashboard.svg">
+                                <p class="nav-option-title">Dashboard</p>
+                            </div>
+                        </div>
+                        <a href="index.html" id="side-nav-employees">
+                            <div class="nav-option" id="nav-employees">
+                                <div class="nav-option-left">
+                                    <img class="nav-icon" alt="Home Smile icon" src="./assets/images/side-navbar/employees.svg">
+                                    <p class="nav-option-title">Employees</p>
+                                </div>
+                                <div class="selected-option"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="management-section">
+                        <!-- Role/User management options here -->
+                        <p class="side-nav-heading">ROLE / USER MANAGEMENT</p>
+                        <!-- Nav Roles -->
+                        <a href="roles.html" id="nav-roles">
+                            <div class="nav-option">
+                                <div class="nav-option-left">
+                                    <img class="nav-icon" alt="Lock icon" src="./assets/images/side-navbar/roles.svg">
+                                    <p class="nav-option-title">Roles</p>
+                                </div>
+                                <span class="nav-right-arrow">&#10095;</span>
+                            </div>
+                        </a>
+                        
+                        <!-- Nav Assign User Roles -->
+                        <div class="nav-option" id="nav-access-rights">
+                            <div class="nav-option-left">
+                                <img class="nav-icon" alt="Lock icon" src="./assets/images/side-navbar/assign-user.svg">
+                                <p class="nav-option-title">Access Rights</p>
+                            </div>
+                            <span class="nav-right-arrow">&#10095;</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="updates-info-container">
+                    <!-- Information about updates here -->
+                    <div class="update-info">
+                        <p id="update-title-version">Install new update 2.3.1A</p>
+                        <p id="update-description">Allow to launch the new update for the AD application</p>
+                    </div>
+                    <div class="update-actions-btn">
+                        <button type="button" id="update-dismiss-btn">Dismiss</button>
+                        <button type="button" id="update-accept-btn">Accept</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <nav class="top-nav-bar">
+                <!-- Input tag and icon div here -->
+                <div class="search-input-container">
+                    <img id="search-icon" alt="Search Icon" src="./assets/images/top-navbar/bx-search.png">
+                    <input id="search-box" class="search-input" placeholder="Search (Ctrl + /)">
+                </div>
+                <!-- Quick action icons and profile section here -->
+                <div class="top-nav-menu">
+                    <div class="top-nav-items">
+                        <img class="quick-action-icon" alt="Language" src="./assets/images/top-navbar/language.svg">
+                        <img class="quick-action-icon" alt="Applications" src="./assets/images/top-navbar/categories.svg">
+                        <img class="quick-action-icon" alt="Switch to dark mode" src="./assets/images/top-navbar/mode.svg">
+                        <img class="quick-action-icon" alt="Notifications" src="./assets/images/top-navbar/notifications.svg">
+                    </div>
+                    <div class="profile-section">
+                        <div class="profile-picture">
+                            <img id="profile-image" alt="Profile Image" src="./assets/images/profile-pics/male-yellow.svg">
+                            <div class="profile-status"></div>
+                        </div>
+                        
+                        <div class="user-details">
+                            <p id="user-name">John Abraham</p>
+                            <p id="user-title">Admin</p>
+                        </div>
+                        <span class="down-arrow">&#10095;</span>
+                        <!-- <span class="down-arrow">&#8250;</span> -->
+                    </div>
+                </div>
+            </nav>
+
+            <div class="add-employee-section">
+                <form id="add-employee-form" onsubmit="submitForm(event)">
+                    <h3>Add Employee</h3>
+                    <div class="upload-image-container">
+                        <img id="preview-img" alt="User Icon" src="./assets/images/interface/profile.png">
+                        <label for="profile-pic">Upload Profile Picture</label>
+                        <input type="file" accept="image/*" id="profile-pic" style="display: none;" onchange="updatePreviewImage(event)">
+                    </div>
+
+                    <h4>Personal Information</h4>
+                    <div class="form-element">
+                        <label for="emp-no" class="required-field">Emp No.</label>
+                        <input type="text" id="emp-no" placeholder="Ex: TZ00123" onblur="validateEmpNo()">
+                        <span class="error-msg">&#9888; This field is required.</span>
+                    </div>
+                    
+                    <div class="name-dob-section">
+                        <div class="form-element">
+                            <label for="first-name" class="required-field">First Name</label>
+                            <input type="text" id="first-name" placeholder="Text" onblur="validateFirstName()">
+                            <span class="error-msg">&#9888; This field is required.</span>
+                        </div>
+
+                        <div class="form-element">
+                            <label for="last-name" class="required-field">Last Name</label>
+                            <input type="text" id="last-name" placeholder="Text" onblur="validateLastName()">
+                            <span class="error-msg">&#9888; This field is required.</span>
+                        </div>
+
+                        <div id="date-picker" class="form-element">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" placeholder="Select">
+                            <!-- yyyy-mm-dd -->
+                        </div>
+                    </div>
+
+                    <div class="email-mobile-section">
+                        <div class="form-element">
+                            <label for="email" class="required-field">Email Id</label>
+                            <input type="text" id="email" placeholder="Joe.j@technovert.com" onblur="validateEmail()">
+                            <span class="error-msg">&#9888; This field is required.</span>
+                        </div>
+
+                        <div class="form-element">
+                            <label for="mobile-no">Mobile Number</label>
+                            <input type="tel" id="mobile-no" placeholder="0000000000" maxlength="10" onblur="validateMobileNo()">
+                            <span class="error-msg">&#9888; Please enter 10 digits.</span>
+                        </div>
+                    </div>
+
+                    <h4>Employement Information</h4>
+                    <div class="emp-info-grid">
+                        <div class="form-element grid">
+                            <label for="join-date" class="required-field">Joining Date</label>
+                            <input type="date" id="join-date" placeholder="12/08/2023" onblur="validateInput(event)">
+                            <span class="error-msg">&#9888; This field is required.</span>
+                        </div>
+
+                        <div class="form-element grid">
+                            <label for="location" class="required-field">Location</label>
+                            <select id="location" onchange="populateJobTitle()" onblur="validateInput(event)">
+                                <option value="" disabled selected>Location </option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Bangalore">Bangalore</option>
+                                <option value="Delhi">Delhi</option>
+                            </select>
+                            <span class="error-msg">&#9888; This field is required.</span>
+                        </div>
+
+                        <div class="form-element grid">
+                            <label for="job-title">Job Title</label>
+                            <select id="job-title">
+                                <option value="" disabled selected>Job Title (Choose department first)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-element grid">
+                            <label for="department" class="required-field">Department</label>
+                            <select id="department" onchange="populateJobTitle()" onblur="validateInput(event)">
+                                <option value="" disabled selected>Department</option>
+                                <option value="Software Development">Software Development</option>
+                                <option value="IT Infrastructure">IT Infrastructure</option>
+                                <option value="Quality Assurance (QA)">Quality Assurance (QA)</option>
+                            </select>
+                            <span class="error-msg">&#9888; This field is required.</span>
+                        </div>
+
+                        <div class="form-element grid">
+                            <label for="assign-manager">Assign Manager</label>
+                            <select id="assign-manager">
+                                <option value="" disabled selected>Search</option>
+                                <option value="manager1">Manager 1</option>
+                                <option value="manager2">Manager 2</option>
+                                <option value="manager3">Manager 3</option>
+                            </select>
+                        </div>
+
+                        <div class="form-element grid">
+                            <label for="assign-project">Assign Project</label>
+                            <select id="assign-project">
+                                <option value="" disabled selected>Search</option>
+                                <option value="project1">Project 1</option>
+                                <option value="project2">Project 2</option>
+                                <option value="project3">Project 3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <a href="./index.html" id="cancel-btn">Cancel</a>
+                        <input id="submit" class="submit-details" type="submit" value="Add Employee">
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

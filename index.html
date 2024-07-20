@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Employees</title>
+        <link rel="stylesheet" href="./assets/css/index.css">
+        <script type="module" src="./dist/db.js"></script>
+        <script type="module" src="./dist/index.js"></script>
+        <script src="./dist/navbar.js"></script>
+    </head>
+    <body>
+
+        <nav id="side-nav" class="side-nav">
+            <div class="logo-container">
+                <!-- Logo and nav-bar minimise button here -->
+                <img id="tezo-logo" alt="Tezo Logo" src="./assets/images/side-navbar/tezo-logo.svg">
+                <img id="toggle-side-nav" alt="Side navbar toggle button" src="./assets/images/side-navbar/toggle-side-nav.png" >
+            </div>
+            <div id="side-nav-wrapper">
+                <div id="side-nav-items">
+                    <div class="all-pages-section">
+                        <!-- Different Pages option here -->
+                        <p class="side-nav-heading">ALL</p>
+                        <!-- Nav Dashboard -->
+                        <div class="nav-option" id="nav-dashboard">
+                            <div class="nav-option-left">
+                                <img class="nav-icon" alt="Lock icon" src="./assets/images/side-navbar/dashboard.svg">
+                                <p class="nav-option-title">Dashboard</p>
+                            </div>
+                        </div>
+                        <div class="nav-option" id="nav-employees">
+                            <div class="nav-option-left">
+                                <img class="nav-icon" alt="Home Smile icon" src="./assets/images/side-navbar/employees.svg">
+                                <p class="nav-option-title">Employees</p>
+                            </div>
+                            <div class="selected-option"></div>
+                        </div>
+                    </div>
+                    <div class="management-section">
+                        <!-- Role/User management options here -->
+                        <p class="side-nav-heading">ROLE / USER MANAGEMENT</p>
+                        <!-- Nav Roles -->
+                        <a href="roles.html" id="nav-roles">
+                            <div class="nav-option">
+                                <div class="nav-option-left">
+                                    <img class="nav-icon" alt="Lock icon" src="./assets/images/side-navbar/roles.svg">
+                                    <p class="nav-option-title">Roles</p>
+                                </div>
+                                <span class="nav-right-arrow">&#10095;</span>
+                            </div>
+                        </a>
+                        
+                        <!-- Nav Assign User Roles -->
+                        <div class="nav-option" id="nav-access-rights">
+                            <div class="nav-option-left">
+                                <img class="nav-icon" alt="Lock icon" src="./assets/images/side-navbar/assign-user.svg">
+                                <p class="nav-option-title">Access Rights</p>
+                            </div>
+                            <span class="nav-right-arrow">&#10095;</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="updates-info-container">
+                    <!-- Information about updates here -->
+                    <div class="update-info">
+                        <p id="update-title-version">Install new update 2.3.1A</p>
+                        <p id="update-description">Allow to launch the new update for the AD application</p>
+                    </div>
+                    <div class="update-actions-btn">
+                        <button type="button" id="update-dismiss-btn">Dismiss</button>
+                        <button type="button" id="update-accept-btn">Accept</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <nav class="top-nav-bar">
+                <!-- Input tag and icon div here -->
+                <div class="search-input-container">
+                    <img id="search-icon" alt="Search Icon" src="./assets/images/top-navbar/bx-search.png">
+                    <input id="search-box" class="search-input" placeholder="Search (Ctrl + /)">
+                </div>
+                <!-- Quick action icons and profile section here -->
+                <div class="top-nav-menu">
+                    <div class="top-nav-items">
+                        <img class="quick-action-icon" alt="Language" src="./assets/images/top-navbar/language.svg">
+                        <img class="quick-action-icon" alt="Applications" src="./assets/images/top-navbar/categories.svg">
+                        <img class="quick-action-icon" alt="Switch to dark mode" src="./assets/images/top-navbar/mode.svg">
+                        <img class="quick-action-icon" alt="Notifications" src="./assets/images/top-navbar/notifications.svg">
+                    </div>
+                    <div class="profile-section">
+                        <div class="profile-picture">
+                            <img id="profile-image" alt="Profile Image" src="./assets/images/profile-pics/male-yellow.svg">
+                            <div class="profile-status"></div>
+                        </div>
+                        
+                        <div class="user-details">
+                            <p id="user-name">John Abraham</p>
+                            <p id="user-title">Admin</p>
+                        </div>
+                        <span class="down-arrow">&#10095;</span>
+                        <!-- <span class="down-arrow">&#8250;</span> -->
+                    </div>
+                </div>
+            </nav>
+            <div class="employees">
+                <div class="employees-section-heading">
+                    <hgroup>
+                        <!-- Heading and sub-heading here -->
+                        <h3>Employees</h3>
+                        <p>Find all of your company's employee accounts and their associated roles.</p>
+                    </hgroup>
+                    <div class="employees-section-btns">
+                        <!-- Export and add employee buttons here -->
+                        <button id="export-button" type="button" onclick="exportToCSV()">
+                            <img id="export-icon" alt="Export Icon" src="./assets/images/interface/Export.svg">
+                            <span>EXPORT</span>
+                        </button>
+                        <a id="add-employee-button" href="add-employee.html">
+                            <img alt="Add icon" src="./assets/images/interface/add.svg">
+                            <span>ADD EMPLOYEE</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="employees-filter">
+                    <!-- Alphabet list for filtering here -->
+                    <div id="alphabet-list">
+                        <div class="radio-container">
+                            <input type="radio" name="alphabet" id="filter-icon" value="" onchange="applyFilters()" checked="true">
+                            <label class="radio-label" for="filter-icon">
+                                <img id="filter-logo" alt="Filter Icon" src="./assets/images/interface/filter-black.svg">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="employee-property-filters">
+                        <div class="property-filter-options">
+                            <p>Filter</p>
+                            <img alt="Filter Icon" src="./assets/images/interface/menu.png">
+                            <div class="multiselect" id="status-dropdown" onclick="toggleDropdown(event)">
+                                <div id="status-filter" class="selected-options">Status</div>
+                                <div class="dropdown-content">
+                                  <label><input type="checkbox" value="Active" onchange="updateSelectedOptions(event, 'Status')"> Active</label>
+                                  <label><input type="checkbox" value="Inactive" onchange="updateSelectedOptions(event, 'Status')"> Inactive</label>
+                                </div>
+                            </div>            
+                            
+                            <div class="multiselect" id="location-dropdown" onclick="toggleDropdown(event)">
+                                <div id="location-filter" class="selected-options">Location</div>
+                                <div class="dropdown-content">
+                                  <label><input type="checkbox" value="Hyderabad" onchange="updateSelectedOptions(event, 'Location')"> Hyderabad</label>
+                                  <label><input type="checkbox" value="Bangalore" onchange="updateSelectedOptions(event, 'Location')"> Bangalore</label>
+                                  <label><input type="checkbox" value="Delhi" onchange="updateSelectedOptions(event, 'Location')"> Delhi</label>
+                                </div>
+                            </div>     
+
+                            <div class="multiselect" id="department-dropdown" onclick="toggleDropdown(event)">
+                                <div id="department-filter" class="selected-options">Department</div>
+                                <div class="dropdown-content">
+                                  <label><input type="checkbox" value="Software Development" onchange="updateSelectedOptions(event, 'Department')"> <span>Software Development</span></label>
+                                  <label><input type="checkbox" value="IT Infrastructure" onchange="updateSelectedOptions(event, 'Department')"> <span>IT Infrastructure</span></label>
+                                  <label><input type="checkbox" value="Quality Assurance (QA)" onchange="updateSelectedOptions(event, 'Department')"> <span>Quality Assurance (QA)</span></label>
+                                </div>
+                            </div>     
+
+                        </div>
+                        <div class="filter-action-buttons">
+                            <button id="filter-reset" type="button" onclick="resetFilters()" disabled>Reset</button>
+                            <button id="filter-apply" type="button" onclick="applyFilters()" disabled>Apply</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="employees-grid">
+                    <div class="employees-table-actions">
+                        <!-- Delete table and add table icons here -->
+                        <div class="delete-employee">
+                            <img alt="Down Left Arrow" src="./assets/images/interface/arrow-left-down.svg">
+                            <button id="delete-btn" type="button" onclick="deleteSelectedRows()" disabled>Delete</button>
+                        </div>
+                        <img alt="Add Table" src="./assets/images/interface/table-add.svg">
+                    </div>
+                    <!-- Actual table here -->
+                    <div class="employee-table-wrapper">
+                        <table id="employee-table">
+                            <thead id="employee-table-header">
+                                <tr>
+                                    <th id="all-employee-select-checkbox" class="employee-table-header-column">
+                                        <input class="check-box" id="select-all-checkbox" type="checkbox" onchange="toggleSelectAllEmployees()">
+                                    </th>
+                                    <th class="employee-table-header-column" onclick="sortTable(1, 'alphabetical')">
+                                        <span>USER</span>
+                                        <div class="sort-option">
+                                            <img alt="up-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                            <img alt="down-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                        </div>
+                                    </th>
+                                    <th class="employee-table-header-column" onclick="sortTable(2, 'alphabetical')">
+                                        <span>LOCATION</span>
+                                        <div class="sort-option">
+                                            <img alt="up-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                            <img alt="down-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                        </div>
+                                    </th>
+                                    <th class="employee-table-header-column" id="department-column" onclick="sortTable(3, 'alphabetical')">
+                                        <span>DEPARTMENT</span>
+                                        <div class="sort-option">
+                                            <img alt="up-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                            <img alt="down-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                        </div>
+                                    </th>
+                                    <th class="employee-table-header-column" id="roles-column" onclick="sortTable(4, 'alphabetical')">
+                                        <span>ROLE</span>
+                                        <div class="sort-option">
+                                            <img alt="up-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                            <img alt="down-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                        </div>
+                                    </th>
+                                    <th class="employee-table-header-column"  onclick="sortTable(5, 'alphanumeric')">
+                                        <span>EMP NO</span>
+                                        <div class="sort-option">
+                                            <img alt="up-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                            <img alt="down-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                        </div>
+                                    </th>
+                                    <th class="employee-table-header-column" id="employee-table-header-column-status"  onclick="sortTable(6, 'alphabetical')">
+                                        <span>STATUS</span>
+                                        <div class="sort-option">
+                                            <img alt="up-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                            <img alt="down-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                        </div>
+                                    </th>
+                                    <th class="employee-table-header-column"  onclick="sortTable(7, 'date')">
+                                        <span>JOIN DT</span>
+                                        <div class="sort-option">
+                                            <img alt="up-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                            <img alt="down-arrow" src="./assets/images/interface/down-arrow-black.svg">
+                                        </div>
+                                    </th>
+                                    <th class="employee-table-header-column"><span class="header-ellipses">&#8943;</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-table-body">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </body>
+</html>

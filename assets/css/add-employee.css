@@ -1,0 +1,591 @@
+@font-face {
+    font-family: Roboto100;
+    src: url(/assets/fonts/Roboto/Roboto-Thin.ttf);
+}
+
+@font-face {
+    font-family: Roboto300;
+    src: url(/assets/fonts/Roboto/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: Roboto400;
+    src: url(/assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Roboto500;
+    src: url(/assets/fonts/Roboto/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: Roboto700;
+    src: url(/assets/fonts/Roboto/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: Roboto900;
+    src: url(/assets/fonts/Roboto/Roboto-Black.ttf);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 18.5% 81.5%;
+    font-size: 14px;
+    font-family: Roboto500;
+    background-color: #FCFCFC;
+}
+
+
+/* Navbar Styles */
+
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    color: #6A6F74;
+    margin: 0px 5px;
+}
+
+#side-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 2em 0.7em 0 0.1em;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#tezo-logo {
+    width: 100px;
+    margin-top: 1.47em;
+    margin-left: 1em;
+}
+
+#toggle-side-nav {
+    width: 2.4em;
+    margin-top: 1.6em;
+    position: absolute;
+    right: -1.5em;
+    cursor: pointer;
+}
+
+.side-nav-heading {
+    color: #BBC2C8;
+    font-family: Roboto500;
+    font-size: 0.8em;
+    padding: 1.1em 1.25em;
+}
+ 
+.nav-option {
+    display: flex;
+    justify-content: space-between;
+    font-family: Roboto500;
+    padding: 10px 9px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.nav-option span {
+    color: #83888bd0;
+}
+
+#nav-employees p {
+    color: #f44848c9;
+}
+
+#nav-employees {
+    background-color: #FDE9E9;
+    position: relative;
+}
+
+.nav-option-left {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.nav-option-left p {
+    font-size: 0.95em;
+    padding-left: 10px;
+    font-family: Roboto700;
+    color: #6a6f74b0;
+}
+
+.nav-option-left img {
+    width: 20px;
+}
+
+.selected-option {
+    width: 4px;
+    border-radius: 5px 0 0 5px;
+    background-color: #F44848;
+    height: 39px;
+    position: absolute;
+    right: -15px;
+    top: 1px;
+}
+
+#side-nav-employees {
+    text-decoration: none;
+}
+
+.management-section {
+    padding-top: 0.8em;
+}
+
+#updates-info-container {
+    background-color: #FEF6F6;
+    border-radius: 8px;
+    padding: 10px 6px 15px 10px;
+    margin-right: -7px;
+    font-family: Roboto400;
+    margin-bottom: 10px;
+}
+
+#update-title-version {
+    color:#F44848;
+    font-family: Roboto500;
+    padding: 5px 0px 3px 0px;
+}
+
+#update-description {
+    color: #BBC2C8;
+    font-size: 0.9em;
+    padding: 5px 0px;
+}
+
+.update-info {
+    padding-bottom: 10px;
+}
+
+.update-actions-btn {
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#update-dismiss-btn {
+    width: 70px;
+    height: 33px;
+    background-color: #FDE6E6;
+    border-radius: 8px;
+    border: none;
+    color: #F44848;
+}
+
+#update-accept-btn{
+    width: 70px;
+    height: 33px;
+    background-color: #F44848;
+    border-radius: 8px;
+    border: none;
+    color: white;
+}
+
+#nav-roles {
+    text-decoration: none;
+}
+
+body.side-nav-collapse {
+    grid-template-columns: 6.5% 93.5%;
+}
+
+body.side-nav-collapse #tezo-logo {
+    content: url('/assets/images/side-navbar/tezo-logo-minimised.svg');
+}
+
+body.side-nav-collapse #toggle-side-nav {
+    transform: rotate(180deg);
+}
+
+body.side-nav-collapse .side-nav-heading, body.side-nav-collapse .nav-option-title, body.side-nav-collapse .nav-right-arrow, body.side-nav-collapse #updates-info-container {
+    display: none;
+}
+
+body.add-transition {
+    transition: grid-template-columns 0.5s;
+}
+
+body.add-transition #toggle-side-nav {
+    transition: transform 0.5s;
+}
+
+/* Main section styles */
+
+main {
+    padding: 10px 15px;
+}
+
+/* Search bar styles */
+
+.top-nav-bar{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.22);
+    border-radius: 10px;
+    background-color: white;
+    height: 63px;
+    padding: 10px;
+}
+
+.search-input-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+#search-icon {
+    padding-left: 10px;
+    height: 22px;
+}
+
+.search-input {
+    border: none;
+    width: 90%;
+    font-size: 1.15em;
+    padding: 10px;
+}
+
+::placeholder {
+    opacity: 0.3;
+    font-family: Roboto500;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.top-nav-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.top-nav-items {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.quick-action-icon {
+    height: 35px;
+    width: 35px;
+}
+
+.quick-action-icon:nth-child(4) {
+    height: 40px;
+    width: 40px;
+}
+
+.profile-section {
+    display: flex;
+    width: 150px;
+}
+
+.profile-picture {
+    position: relative;
+}
+
+.profile-status {
+    position: absolute;
+    bottom: 2px;
+    right: 0;
+    height: 11px;
+    width: 11px;
+    background-color: #28C76F;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+#profile-image {
+    height: 35px;
+    width: 35px;
+}
+
+.user-details {
+    padding-left: 8px;
+    padding-right: 10px;
+}
+
+#user-name {
+    font-size: 0.8em;
+    padding-top: 2px;
+    color: rgba(0, 0, 0, 0.582);
+    font-family: Roboto700;
+}
+
+#user-title {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+.down-arrow, .table-sort-arrow {
+    display: inline-block;
+    transform: rotate(90deg);
+}
+
+/* Add-employee Section  */
+
+.add-employee-section {
+    padding: 30px 10px 10px 10px;
+}
+
+#add-employee-form h3 {
+    font-family: Roboto300;
+    font-size: 1.3em;
+}
+
+.upload-image-container {
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.upload-image-container img {
+    height: 80px;
+    width: 80px;
+}
+
+.upload-image-container label {
+    margin-left: 20px;
+    border-radius: 5px;
+    background-color: #F44848;
+    color: rgba(255, 255, 255, 0.881);
+    padding: 8px 15px;
+    font-family: Roboto400;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+#add-employee-form h4 {
+    padding-top: 30px;
+    font-size: 1em;
+    font-family: Roboto400;
+}
+
+.form-element {
+    display: inline-flex;
+    flex-direction: column;
+    padding-top: 25px;
+    width: 215px;
+    margin-right: 20px;
+}
+
+.form-element label {
+    padding-bottom: 5px;
+    color: #787D88;
+}
+
+.form-element input {
+    border: 2px solid #DFE1E6;
+    border-radius: 5px;
+    background-color: #FAFBFC;
+}
+
+.form-element select {
+    border: none;
+    background-color: #F4F5F7;
+}
+
+.form-element input,select {
+    height: 35px;
+    padding: 5px;
+}
+
+.form-element input:focus, select:focus {
+    outline-color: #4C9AFF;
+}
+
+.name-dob-section {
+    display: flex;
+}
+
+.email-mobile-section {
+    display: flex;
+}
+
+.grid {
+    width: 350px;
+    padding-top: 5px;
+}
+
+.emp-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 350px);
+    gap: 15px;
+    padding-top: 20px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.form-buttons input {
+    height: 35px;
+    width: 110px;
+    border: none;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+#cancel-btn {
+    background-color: #FBEBEB;
+    color: #F44848;
+    text-decoration: none;
+    height: 35px;
+    width: 110px;
+    margin-right: 10px;
+    border-radius: 8px;
+    text-align: center;
+    padding-top: 9px;
+}
+
+#submit {
+    background-color: #F44848;
+    color: white;
+}
+
+.error-msg {
+    display: none;
+    font-size: 0.6em;
+    color: red;
+}
+
+.required-field::after {
+    content: "*";
+    color: red;
+}
+
+
+/* Toast */
+
+
+.toast { 
+	position: fixed; 
+	top: 45px; 
+	right: 25px; 
+	max-width: 300px; 
+	background: #fff; 
+	padding: 0.5rem; 
+	border-radius: 4px; 
+	box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.3); 
+	z-index: 2; 
+	animation: slideInRight 0.3s ease-in-out forwards, 
+		fadeOut 0.5s ease-in-out forwards 3s; 
+	transform: translateX(110%); 
+} 
+
+.toast.closing { 
+	animation: slideOutRight 0.5s ease-in-out forwards; 
+} 
+
+.toast-progress { 
+	position: absolute; 
+	display: block; 
+	bottom: 0; 
+	left: 0; 
+	height: 4px; 
+	width: 100%; 
+	background: #b7b7b7; 
+	animation: toastProgress 3s ease-in-out forwards; 
+} 
+
+.toast-content-wrapper { 
+	display: flex; 
+	justify-content: space-around; 
+	align-items: center; 
+} 
+
+.toast-icon { 
+	padding: 0.35em 0.4em; 
+    height: 30px;
+    width: 30px;
+} 
+
+.toast-message { 
+	flex: 1; 
+	font-size: 0.9em; 
+	color: #000000; 
+	padding: 0.8em; 
+} 
+
+.toast.toast-success { 
+	background: #95eab8; 
+} 
+
+.toast.toast-success .toast-progress { 
+	background-color: #2ecc71; 
+} 
+
+@keyframes slideInRight { 
+	0% { 
+		transform: translateX(110%); 
+	} 
+
+	75% { 
+		transform: translateX(-10%); 
+	} 
+
+	100% { 
+		transform: translateX(0%); 
+	} 
+} 
+
+@keyframes slideOutRight { 
+	0% { 
+		transform: translateX(0%); 
+	} 
+
+	25% { 
+		transform: translateX(-10%); 
+	} 
+
+	100% { 
+		transform: translateX(110%); 
+	} 
+} 
+
+@keyframes fadeOut { 
+	0% { 
+		opacity: 1; 
+	} 
+
+	100% { 
+		opacity: 0; 
+	} 
+} 
+
+@keyframes toastProgress { 
+	0% { 
+		width: 100%; 
+	} 
+
+	100% { 
+		width: 0%; 
+	} 
+}

@@ -1,0 +1,837 @@
+@font-face {
+    font-family: Roboto100;
+    src: url(/assets/fonts/Roboto/Roboto-Thin.ttf);
+}
+
+@font-face {
+    font-family: Roboto300;
+    src: url(/assets/fonts/Roboto/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: Roboto400;
+    src: url(/assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Roboto500;
+    src: url(/assets/fonts/Roboto/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: Roboto700;
+    src: url(/assets/fonts/Roboto/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: Roboto900;
+    src: url(/assets/fonts/Roboto/Roboto-Black.ttf);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 18.5% 81.5%;
+    font-size: 14px;
+    font-family: Roboto500;
+    background-color: #FCFCFC;
+}
+
+
+/* Navbar Styles */
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    color: #6A6F74;
+    margin: 0px 5px;
+}
+
+#side-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 2em 0.7em 0 0.1em;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#tezo-logo {
+    width: 100px;
+    margin-top: 1.47em;
+    margin-left: 1em;
+}
+
+#toggle-side-nav {
+    width: 2.4em;
+    margin-top: 1.6em;
+    position: absolute;
+    right: -1.5em;;
+    cursor: pointer;
+}
+
+.side-nav-heading {
+    color: #BBC2C8;
+    font-family: Roboto500;
+    font-size: 0.8em;
+    padding: 1.1em 1.25em;
+}
+ 
+.nav-option {
+    display: flex;
+    justify-content: space-between;
+    font-family: Roboto500;
+    padding: 10px 9px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.nav-option span {
+    color: #83888bd0;
+}
+
+#nav-employees p {
+    color: #f44848c9;
+}
+
+#nav-employees {
+    background-color: #FDE9E9;
+    position: relative;
+}
+
+.nav-option-left {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.nav-option-left p {
+    font-size: 0.95em;
+    padding-left: 10px;
+    font-family: Roboto700;
+    color: #6a6f74b0;
+}
+
+.nav-option-left img {
+    width: 20px;
+}
+
+.selected-option {
+    width: 4px;
+    border-radius: 5px 0 0 5px;
+    background-color: #F44848;
+    height: 39px;
+    position: absolute;
+    right: -15px;
+    top: 1px;
+}
+
+.management-section {
+    padding-top: 0.8em;
+}
+
+#updates-info-container {
+    background-color: #FEF6F6;
+    border-radius: 8px;
+    padding: 10px 6px 15px 10px;
+    margin-right: -7px;
+    font-family: Roboto400;
+    margin-bottom: 10px;
+}
+
+#update-title-version {
+    color:#F44848;
+    font-family: Roboto500;
+    padding: 5px 0px 3px 0px;
+}
+
+#update-description {
+    color: #BBC2C8;
+    font-size: 0.9em;
+    padding: 5px 0px;
+}
+
+.update-info {
+    padding-bottom: 10px;
+}
+
+.update-actions-btn {
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#update-dismiss-btn {
+    width: 70px;
+    height: 33px;
+    background-color: #FDE6E6;
+    border-radius: 8px;
+    border: none;
+    color: #F44848;
+}
+
+#update-accept-btn{
+    width: 70px;
+    height: 33px;
+    background-color: #F44848;
+    border-radius: 8px;
+    border: none;
+    color: white;
+}
+
+#nav-roles {
+    text-decoration: none;
+}
+
+body.side-nav-collapse {
+    grid-template-columns: 6.5% 93.5%;
+}
+
+body.side-nav-collapse #tezo-logo {
+    content: url('/assets/images/side-navbar/tezo-logo-minimised.svg');
+}
+
+body.side-nav-collapse #toggle-side-nav {
+    transform: rotate(180deg);
+}
+
+body.side-nav-collapse .side-nav-heading, body.side-nav-collapse .nav-option-title, body.side-nav-collapse .nav-right-arrow, body.side-nav-collapse #updates-info-container {
+    display: none;
+}
+
+body.add-transition {
+    transition: grid-template-columns 0.5s;
+}
+
+body.add-transition #toggle-side-nav {
+    transition: transform 0.5s;
+}
+
+/* Main section styles */
+
+main {
+    padding: 10px 15px;
+    height: 100vh;
+}
+
+/* Search bar styles */
+
+.top-nav-bar{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.22);
+    border-radius: 10px;
+    background-color: white;
+    height: 63px;
+    padding: 10px;
+}
+
+.search-input-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+#search-icon {
+    padding-left: 10px;
+    height: 22px;
+}
+
+.search-input {
+    border: none;
+    width: 90%;
+    font-size: 1.15em;
+    padding: 10px;
+}
+
+::placeholder {
+    opacity: 0.3;
+    font-family: Roboto500;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.top-nav-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.top-nav-items {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.quick-action-icon {
+    height: 35px;
+    width: 35px;
+}
+
+.quick-action-icon:nth-child(4) {
+    height: 40px;
+    width: 40px;
+}
+
+.profile-section {
+    display: flex;
+    width: 150px;
+}
+
+.profile-picture {
+    position: relative;
+}
+
+.profile-status {
+    position: absolute;
+    bottom: 2px;
+    right: 0;
+    height: 11px;
+    width: 11px;
+    background-color: #28C76F;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+#profile-image {
+    height: 35px;
+    width: 35px;
+}
+
+.user-details {
+    padding-left: 8px;
+    padding-right: 10px;
+}
+
+#user-name {
+    font-size: 0.8em;
+    padding-top: 2px;
+    color: rgba(0, 0, 0, 0.582);
+    font-family: Roboto700;
+}
+
+#user-title {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+.down-arrow, .table-sort-arrow {
+    display: inline-block;
+    transform: rotate(90deg);
+}
+
+/* Employee actions styles */
+
+.employees-section-heading {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+hgroup h3 {
+    padding: 10px 0;
+    font-family: Roboto400;
+    font-size: 1.05em;
+    color: #788693;
+}
+
+hgroup p {
+    padding: 4px 0;
+    font-size: 1em;
+    color: #A1ABB4;
+    font-family: Roboto400;
+}
+
+.employees-section-btns {
+    display: flex;
+    align-items: center;
+}
+
+#export-button {
+    display: flex;
+    background-color: white;
+    border: 1.5px solid #D8DBE0;
+    color: #949FAE;
+    border-radius: 8px;
+    height: 35px;
+    width: 110px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#export-button span {
+    padding-left: 8px;
+    font-family: Roboto500;
+}
+
+#add-employee-button {
+    display: flex;
+    background-color: #F44848;
+    border: 1px solid #F44848;
+    color: rgba(255, 255, 255, 0.828);
+    border-radius: 8px;
+    height: 38px;
+    width: 190px;
+    text-decoration: none;
+    margin-left: 15px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#add-employee-button img {
+    padding-right: 3px;
+    height: 22px;
+}
+
+#add-employee-button span {
+    width: 115px;
+    font-family: Roboto400;
+    font-size: 1.1em;
+}
+
+/* Filter styles */
+
+#alphabet-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.radio-container {
+    position: relative;
+}
+
+.radio-label {
+    position: absolute;
+    right: 11px;
+    top: 9px;
+    font-size: 1em;
+    color: #8592A3;
+    cursor: pointer;
+    font-family: Roboto400;
+}
+
+#alphabet-list input {
+    appearance: none;
+    border: 1px solid #EAEBEE;
+    background-color: #EAEBEE;
+    min-width: 30px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#alphabet-list #filter-icon {
+    appearance: none;
+    border: none;
+    background-color: white;
+    width: 30px;
+    height: 35px;
+    cursor: pointer;
+}
+
+#alphabet-list #filter-icon + label {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#alphabet-list img {
+    height: 35px;
+    background-color: #FCFCFC;
+}
+
+#alphabet-list input:checked {
+    background-color: #F44848;
+}
+
+#alphabet-list input:checked + .radio-label{
+    color: white;
+}
+
+.employee-property-filters {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FDF2F2;
+    border: 1px solid #FBC0C0;
+    margin: 14px 0;
+    border-radius: 5px;
+    padding: 0px 10px;
+    height: 45px;
+}
+
+.property-filter-options {
+    display: flex;
+    padding: 8px 10px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.property-filter-options p {
+    color: #f44848d0;
+}
+
+.property-filter-options img {
+    margin: 0px 7px;
+    height: 15px;
+    width: 15px;
+}
+
+.selected-options {
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.dropdown-content span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#status-dropdown {
+    width: 70px;
+    background-position: 50px;
+    padding-right: 15px;
+}
+
+#location-dropdown {
+    width: 80px;
+    background-position: 60px;
+    padding-right: 20px;
+}
+
+#department-dropdown {
+    width: 100px;
+    background-position: 80px;
+    padding-right: 25px;
+}
+
+.multiselect {
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #FBC0C0;
+    padding: 8px 2px 8px 5px;
+    border-radius: 5px;
+    background-color: white;;
+    margin: 0px 3px;
+    color: #455573;
+    font-size: 0.9em;
+    font-family: Roboto400;
+    appearance: none;
+    background-image: url("/assets/images/interface/arrow-down.png");
+    background-size: 9px;
+    background-repeat: no-repeat;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    border-radius: 5px;
+    left: 0;
+    top: 100%;
+    font-size: 0.9em;
+}
+
+.dropdown-content label {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px 5px 5px;
+}
+
+.dropdown-content label:hover {
+    background-color: blue;
+    color: white;
+}
+
+.dropdown-content label input {
+    margin-right: 3px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.employee-property-filters .filter-action-buttons{
+    margin: 10px 0;
+}
+
+.employee-property-filters button {
+    height: 25px;
+    width: 55px;
+    border-radius: 3px;
+    margin-left: 10px;
+    font-size: 0.8em;
+    font-weight: bold;
+    font-family: Roboto300;
+}
+
+#filter-reset {
+    border: 1px solid #FF616D;
+    color: #ff616eb1;
+    background-color: white;
+}
+
+#filter-apply {
+    color: rgba(255, 255, 255, 0.82);
+    background-color: #F44848;
+    border: 1px solid #F44848;
+}
+
+.filter-action-buttons button:disabled {
+    opacity: 0.6;
+}
+
+
+/* Employee table styles */
+
+.employees-grid {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.employees-table-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+}
+
+.delete-employee {
+    display: flex;
+    align-items: center;
+}
+
+.delete-employee img {
+    height: 20px;
+}
+
+.delete-employee button {
+    background-color: #F44848;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: #FFFFFF;
+    width: 60px;
+    height: 25px;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+#delete-btn:disabled {
+    cursor: default;
+    background-color: #F89191;
+    color: rgba(255, 255, 255, 0.831);
+}
+
+.employee-table-wrapper {
+    height: calc(100vh - (350px));
+    overflow-y: auto;
+}
+
+#employee-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-table-header-column {
+    background-color: #FAFAFC;
+    text-align: start;
+    height: 45px;
+    color: #455573cc;
+    font-size: 0.8em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sort-option {
+    display: inline-flex;
+    flex-direction: column;
+    height: 9px;
+    position: relative;
+    top: -3px;
+}
+
+.sort-option img:nth-child(1) {
+    transform: rotate(180deg);
+    margin-left: 4px;
+    margin-bottom: -2px;
+    height: 8px;
+}
+
+.employee-table-header-column img {
+    height: 8px;
+    padding-left: 2px;
+}
+
+
+td, th {
+    padding: 8px;
+}
+
+td {
+    color: #404040;
+}
+
+tr {
+    border: solid;
+    border-width: 1px 0;
+    border-color: #D9D9D9;
+    height: 50px;
+}
+
+td input, th input {
+    width: 16px;
+    height: 16px;
+    margin: 0px 13px;
+    opacity: 0.3;
+}
+
+th input:checked, td input:checked {
+    opacity: 1;
+    accent-color: #F44848;
+}
+
+.select-employee-checkbox {
+    text-align: center;
+}
+
+#all-employee-select-checkbox {
+    text-align: center;
+}
+
+#department-column, #roles-column {
+    width: 150px;
+}
+
+tr:hover {
+    background-color: #FFF4F4;
+}
+
+.employee-cell-info {
+    display: flex;
+}
+
+.header-ellipses {
+    font-size: 1.5em;
+    position: relative;
+    /* cursor: default; */
+    user-select: none;
+}
+
+thead tr th:last-child {
+    cursor: default;
+}
+
+.ellipses {
+    font-size: 1.5em;
+    position: relative;
+    user-select: none;
+}
+
+.ellipses span {
+    cursor: pointer;
+}
+
+.employee-image {
+    height: 30px;
+    width: 30px;
+}
+
+.employee-cell-name-email {
+    padding-left: 10px;
+}
+
+.employee-cell-name {
+    font-size: 1em;
+}
+
+.employee-cell-email {
+    font-size: 0.8em;
+    color: #738096;
+}
+
+#employee-table-heading-status {
+    width: 75px;
+}
+
+.employee-status {
+    background-color: #E7F4E8;
+    color: #419077cb;
+    border-radius: 5px;
+    text-align: center;
+    padding: 7px 0px;
+    font-size: 0.8em;
+}
+
+.inactive {
+    color: #F44848;
+    background-color: #FEF6F6;
+}
+
+/* Styles for the ellipses popup */
+.ellipses-popup {
+    background-color: #fff;
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    top: 55%;
+    right: 45%;
+    padding: 4px 5px;
+    max-width: 50px;
+    z-index: 1000;
+}
+
+.ellipses-popup p {
+    font-size: 0.45em;
+    padding: 3px 10px 3px 5px;
+    margin: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ellipses-popup p:hover {
+    background-color: #f0f0f0;
+}
+
+.ellipses-popup hr {
+    margin: 2px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
